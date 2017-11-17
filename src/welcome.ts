@@ -6,38 +6,32 @@ import {Router, RouterConfiguration} from 'aurelia-router';
 @autoinject
 
 export class Welcome {
-
-  heading: string = 'Welcome to the Aurelia Navigation App';
+  
+  heading: string = 'Weather';
+  data;
+  locations;
   query: string = '';
-  weathers;
+  search:boolean=false;
   loaded;
-  public locations = [
-    2344116,638242,565346,560743,9807,44418,
-  ];
+ 
 ;
 
   constructor(private http: HttpClient,private router: Router) {
- 
+     this.locations = [
+      2344116,638242,565346,560743,9807,44418,
+    ];
   }
 
   submit() {
-
+    this.search = true;
+    this.heading = 'Search Results';
     this.router.navigate('search/'+ this.query)
-    
     return this.http.fetch('https://www.metaweather.com/api/location/search/?query='+this.query)
     .then(response => response.json())
     .then(weather => {
-        this.weathers = weather;
+        this.locations = weather;
         this.loaded = true
-        console.log(this.weathers);
+        console.log(this.locations);
     });
-    
-  }
-
-  some(x){
-    return this.heading;
-    var num = new Number(x); 
-    console.log(num.toString());
- return num.toString();
   }
 }

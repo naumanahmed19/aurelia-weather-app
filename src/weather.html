@@ -1,8 +1,10 @@
-<template>
-  
+<template bindable="data">
+   
+    ${go(data)}
+
+
   <div class="panel panel-default" if.bind="loaded">
-      ${woeid}
-     
+      
       <!-- Default panel contents -->
       <div class="panel-heading">${weather.title}</div>
       <div class="panel-body">
@@ -28,4 +30,6 @@
 
       
     </div>
+
+
 </template>

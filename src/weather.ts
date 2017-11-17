@@ -1,5 +1,5 @@
 
-import {bindable,autoinject} from 'aurelia-framework';
+import {bindable,bindingMode,autoinject} from 'aurelia-framework';
 import { HttpClient } from 'aurelia-fetch-client';
 
 
@@ -8,42 +8,49 @@ export class Weather {
 
   public header = 'weather';
 
-  weather;
+ weather;
   loaded;
-  @bindable woeid;
-  @bindable to: string;
-  
+
+
+  @bindable woeid: string;
+  @bindable data;
+  vid: string;
+
+
   constructor(private http: HttpClient) {}
-  speak(): void {
-    alert(`Hello ${this.to}!`);
-  }
-  created() {
+
+
+  go(data){
+   
+    if(typeof data === 'object'){
+      this.weather = data;
+      this.loaded = true
+    }else{
+     var woeid = data;
+      this.http.fetch('https://www.metaweather.com/api/location/'+woeid+'/')
+      .then(response => response.json())
+      .then(weather => {
+          this.weather = weather;
+          this.loaded = true
+          console.log(this.weather);
+      });
+    }
   
-    console.log(this.woeid)
-    return this.http.fetch('https://www.metaweather.com/api/location/'+this.woeid+'/')
-    .then(response => response.json())
-    .then(weather => {
-        this.weather = weather;
-        this.loaded = true
-        console.log(this.weather);
-    });
-  }
+  };
 
- 
-
-  max(){
+  // max(){
 
 
-    var data = this.weather.consolidated_weather;
+  //   var data = this.weather.consolidated_weather;
 
-   return Math.max.apply(Math,data.map(function(o){return o.max_temp;}))
+  //  return Math.max.apply(Math,data.map(function(o){return o.max_temp;}))
      
 
-  }
-  min(){
-      var data = this.weather.consolidated_weather;
+  // }
+  // min(){
+  //     var data = this.weather.consolidated_weather;
 
-       return Math.max.apply(Math,data.map(function(o){return o.min_temp;}))
+  //      return Math.max.apply(Math,data.map(function(o){return o.min_temp;}))
          
-      }
+  //     }
 }
