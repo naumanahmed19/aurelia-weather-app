@@ -1,0 +1,31 @@
+<template>
+  
+  <div class="panel panel-default" if.bind="loaded">
+      ${woeid}
+     
+      <!-- Default panel contents -->
+      <div class="panel-heading">${weather.title}</div>
+      <div class="panel-body">
+          <img src="https://www.metaweather.com/static/img/weather/${w.weather_state_abbr}.svg" width="30">
+
+          <a route-href="route: weathers; params.bind: {id:weather.woeid}" >
+              <h4 class="list-group-item-heading">View Details</h4>
+          
+            </a>
+
+      </div>
+      <li class="list-group-item"> Max :   ${max()}</li>
+      <li class="list-group-item"> Max :   ${min()}</li>
+      <!-- List group -->
+      <ul class="list-group">
+         
+          <!-- <div repeat.for="w of weather.consolidated_weather">
+              <li class="list-group-item"> Max :   ${max()}</li>
+              <li class="list-group-item"> Min :   ${min()}</li>
+             
+          </div> -->
+      </ul>
+
+      
+    </div>
+</template>
