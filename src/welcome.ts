@@ -8,6 +8,7 @@ import {Router, RouterConfiguration} from 'aurelia-router';
 export class Welcome {
   
   heading: string = 'Weather';
+  noResults: string ='No results were found. Try changing the keyword!';
   woeid;
   locations;
   query: string = '';

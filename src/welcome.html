@@ -14,7 +14,7 @@
       </div>
         <weather class="col-md-6" repeat.for="location of locations" woeid.bind="location"></weather>
        <div if.bind='locations.length==0'>
-          <h4>Nothing Found</h4>
+          <h4>${noResults}</h4>
       </div>
       </div>
-    </template>
+  </template>
