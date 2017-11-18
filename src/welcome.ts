@@ -8,7 +8,7 @@ import {Router, RouterConfiguration} from 'aurelia-router';
 export class Welcome {
   
   heading: string = 'Weather';
-  data;
+  woeid;
   locations;
   query: string = '';
   search:boolean=false;
@@ -28,10 +28,9 @@ export class Welcome {
     this.router.navigate('search/'+ this.query)
     return this.http.fetch('https://www.metaweather.com/api/location/search/?query='+this.query)
     .then(response => response.json())
-    .then(weather => {
-        this.locations = weather;
-        this.loaded = true
-        console.log(this.locations);
+    .then(res => {
+      this.locations =  res.map(function(a) {return a.woeid});
+      this.loaded = true
     });
   }
 }

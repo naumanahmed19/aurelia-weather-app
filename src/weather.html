@@ -1,35 +1,19 @@
-<template bindable="data">
-   
-    ${go(data)}
-
-
+<template bindable="woeid">
+    ${go(woeid)}
   <div class="panel panel-default" if.bind="loaded">
-      
-      <!-- Default panel contents -->
       <div class="panel-heading">${weather.title}</div>
-      <div class="panel-body">
-          <img src="https://www.metaweather.com/static/img/weather/${w.weather_state_abbr}.svg" width="30">
-
-          <a route-href="route: weathers; params.bind: {id:weather.woeid}" >
-              <h4 class="list-group-item-heading">View Details</h4>
-          
-            </a>
-
-      </div>
-      <li class="list-group-item"> Max :   ${max()}</li>
-      <li class="list-group-item"> Max :   ${min()}</li>
-      <!-- List group -->
-      <ul class="list-group">
-         
-          <!-- <div repeat.for="w of weather.consolidated_weather">
-              <li class="list-group-item"> Max :   ${max()}</li>
-              <li class="list-group-item"> Min :   ${min()}</li>
-             
-          </div> -->
-      </ul>
-
-      
+        <ul class="list-group" repeat.for="w of weather.consolidated_weather" if.bind="$first">
+            <li class="list-group-item"> <img src="https://www.metaweather.com/static/img/weather/${w.weather_state_abbr}.svg" width="30">
+                <span class="pull-right">
+                    <a class="btn btn-success" route-href="route: weathers; params.bind: {id:weather.woeid}" >
+                        View Details
+                    </a>
+                </span>
+            </li>
+           
+            <li class="list-group-item">Minimum Temprature <span class="pull-right">${w.min_temp}</span></li>
+            <li class="list-group-item">Maximum Temprature<span class="pull-right">${w.max_temp} </span></li>
+            <li class="list-group-item">Temprature<span class="pull-right">${w.the_temp}</span> </li>
+        </ul>
     </div>
-
-
 </template>

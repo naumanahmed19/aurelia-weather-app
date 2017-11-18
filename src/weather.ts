@@ -20,13 +20,7 @@ export class Weather {
   constructor(private http: HttpClient) {}
 
 
-  go(data){
-   
-    if(typeof data === 'object'){
-      this.weather = data;
-      this.loaded = true
-    }else{
-     var woeid = data;
+  go(woeid){
       this.http.fetch('https://www.metaweather.com/api/location/'+woeid+'/')
       .then(response => response.json())
       .then(weather => {

@@ -1,27 +1,20 @@
 <template> 
     <require from="./weather"></require>
- 
-  <header class="au-animate">
+  <header class="entry-header page-header">
     <form role="form" submit.delegate="submit()">
       <div class="form-group">
-        <input type="text" value.bind="query" class="form-control" id="fn" placeholder="Search A city">
+        <input type="text" value.bind="query" class="form-control" id="fn" placeholder="Search A city" required>
       </div>
       <button type="submit" class="btn btn-default">Search</button>
     </form>
   </header>
-
-    
-
-    
- 
      <div class="row">
-       
-          <h1>${heading}</h1>
-          <weather class="col-md-6" repeat.for="location of locations" data.bind="location"></weather>
-          <!-- <weather class="col-md-6" repeat.for="location of locations" woeid.bind="location"></weather> -->
-  
+      <div class="col-md-12">
+        <h1>${heading}</h1>
+      </div>
+        <weather class="col-md-6" repeat.for="location of locations" woeid.bind="location"></weather>
        <div if.bind='locations.length==0'>
           <h4>Nothing Found</h4>
-       </div>
-     
+      </div>
+      </div>
     </template>
