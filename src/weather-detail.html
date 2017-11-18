@@ -1,5 +1,5 @@
 <template>
- 
+        <require from="./date-format"></require>
     <h1> <li class="list-group-item">${weather.title}</h1>
     <hr>
     <div class="row">
@@ -7,7 +7,7 @@
             <ul  class="list-group">
                     <li class="list-group-item"> <img src="https://www.metaweather.com/static/img/weather/${w.weather_state_abbr}.svg" width="30">
                         <span class="pull-right">
-                          
+                                ${w.applicable_date | dateFormat:'dddd'} <br/>
                         </span>
                     </li>
                     

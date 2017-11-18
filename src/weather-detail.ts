@@ -1,7 +1,9 @@
 
-import {bindable} from 'aurelia-framework';
+import { autoinject, bindable} from 'aurelia-framework';
 import { HttpClient } from 'aurelia-fetch-client';
-import { autoinject } from 'aurelia-framework';
+
+
+import moment from 'moment';
 
 @autoinject
 export class Weather {
