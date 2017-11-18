@@ -14,8 +14,6 @@ export class Welcome {
   search:boolean=false;
   loaded;
  
-;
-
   constructor(private http: HttpClient,private router: Router) {
      this.locations = [
       2344116,638242,565346,560743,9807,44418,

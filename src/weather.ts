@@ -29,22 +29,5 @@ export class Weather {
           console.log(this.weather);
       });
     }
-  
-  };
 
-  // max(){
-
-
-  //   var data = this.weather.consolidated_weather;
-
-  //  return Math.max.apply(Math,data.map(function(o){return o.max_temp;}))
-     
-
-  // }
-  // min(){
-  //     var data = this.weather.consolidated_weather;
-
-  //      return Math.max.apply(Math,data.map(function(o){return o.min_temp;}))
-         
-  //     }
 }

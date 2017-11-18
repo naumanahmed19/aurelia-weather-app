@@ -2,36 +2,20 @@
  
     <h1> <li class="list-group-item">${weather.title}</h1>
     <hr>
-    <div class="panel panel-default" if.bind="loaded">
-            <!-- Default panel contents -->
-            <div class="panel-heading"><li class="list-group-item">${weather.title}</div>
-            <div class="panel-body">
-             
-            </div>
-            <!-- List group -->
-           
-         <div class="row">
-                <div class="col-md-4" repeat.for="w of weather.consolidated_weather">
-                    <ul  class="list-group">
-                        <li class="list-group-item">${w.id}</li>
-                        <li class="list-group-item">${w.weather_state_name}</li>
-                        <li class="list-group-item">${w.weather_state_abbr} </li>
-                        <li class="list-group-item">${w.wind_direction_compass} </li>
-                        <li class="list-group-item">${w.created} </li>
-                        <li class="list-group-item">${w.applicable_date} </li>
-                        <li class="list-group-item">${w.min_temp}</li>
-                        <li class="list-group-item">${w.max_temp} </li>
-                        <li class="list-group-item">${w.the_temp} </li>
-                        <li class="list-group-item">${w.wind_speed} </li>
-                        <li class="list-group-item">${w.wind_direction} </li>
-                        <li class="list-group-item">${w.air_pressure} </li>
-                        <li class="list-group-item">${w.humidity} </li>
-                        <li class="list-group-item">${w.visibility} </li>
-                        <li class="list-group-item">${w.predictability}</li>
+    <div class="row">
+        <div class="col-md-4" repeat.for="w of weather.consolidated_weather">
+            <ul  class="list-group">
+                    <li class="list-group-item"> <img src="https://www.metaweather.com/static/img/weather/${w.weather_state_abbr}.svg" width="30">
+                        <span class="pull-right">
+                          
+                        </span>
+                    </li>
+                    
+                    <li class="list-group-item">Min Temprature <span class="pull-right">${w.min_temp}</span></li>
+                    <li class="list-group-item">Max Temprature<span class="pull-right">${w.max_temp} </span></li>
+                    <li class="list-group-item">Temprature<span class="pull-right">${w.the_temp}</span> </li>
 
-                    </ul>
-                </div>
-            </div>
-
-          </div>
+            </ul>
+        </div>
+    </div>
 </template>
